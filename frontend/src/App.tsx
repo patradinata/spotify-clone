@@ -1,17 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/home/HomePage";
 import AuthCallbackPage from "./pages/home/auth-callback/AuthCallbackPage";
-import { axiosInstance } from "./lib/axios";
-// import { axiosInstance } from "./lib/axios";
+import { AuthenticateWithRedirectCallback } from "@clerk/clerk-react";
 
 function App() {
-  // token =>
-  // axiosInstance.get()
-
   return (
     <div>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/sso-callback" element={<AuthenticateWithRedirectCallback signInForceRedirectUrl={"/auth-callback"} />} />
         <Route path="/auth-callback" element={<AuthCallbackPage />} />
       </Routes>
     </div>
