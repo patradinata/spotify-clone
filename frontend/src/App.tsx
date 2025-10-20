@@ -1,19 +1,19 @@
-import { Button } from "@/components/ui/button";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/home/HomePage";
+import AuthCallbackPage from "./pages/home/auth-callback/AuthCallbackPage";
+import { axiosInstance } from "./lib/axios";
+// import { axiosInstance } from "./lib/axios";
 
 function App() {
+  // token =>
+  // axiosInstance.get()
+
   return (
     <div>
-      <header>
-        <SignedOut>
-          <SignInButton>
-            <Button>Sign In dulu bang</Button>
-          </SignInButton>
-        </SignedOut>
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
-      </header>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/auth-callback" element={<AuthCallbackPage />} />
+      </Routes>
     </div>
   );
 }

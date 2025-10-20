@@ -1,9 +1,8 @@
 import { Router } from "express";
+import { protectRoute } from "../middleware/auth.middleware";
+import { getStats } from "../controller/stat.controller";
 
 const router = Router();
-
-router.get("/", (req, res) => {
-  res.send("Stat Route with GET method");
-});
+router.get("/", protectRoute, requireAdmin, getStats);
 
 export default router;
